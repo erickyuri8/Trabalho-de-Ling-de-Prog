@@ -5,12 +5,12 @@ from code.Const import WIDTH, MENU_BUTTONS
 from pygame.font import Font
 
 
-
 class Menu:
     def __init__(self, window):
         self.window = window
         self.surf = pygame.image.load("./asset/menuback.png")
         self.rect = self.surf.get_rect(left=0, top=0)
+
 
     def run(self, ):
         pygame.mixer_music.load("./asset/menusound.wav")
