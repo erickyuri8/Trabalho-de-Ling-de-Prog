@@ -11,9 +11,11 @@ BG1_SPEED = {
 
 #M
 MENU_BUTTONS = ("NEW GAME",
-                "SCORE",
                 "QUIT")
 
+#G
+GO_BUTTONS = ("RETURN MENU",
+                   "QUIT GAME")
 #W
 WIDTH = 576
 HEIGHT = 324
