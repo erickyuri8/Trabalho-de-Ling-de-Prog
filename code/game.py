@@ -6,7 +6,6 @@ from code.level import Level
 from code.menu import Menu
 from code.gameover import GameOver
 
-
 class Game:
     def __init__(self):
         pygame.init()
@@ -14,30 +13,28 @@ class Game:
 
     def run(self):
         while True:
-            # Menu principal
+            # MAIN MENU
             menu = Menu(self.window)
             menu_return = menu.run()
-
-            if menu_return == MENU_BUTTONS[0]:  # NEW GAME
-                # Level 1
+            if menu_return == MENU_BUTTONS[0]:  #NEW GAME
+                #LEVEL 1
                 level = Level(self.window, "Level1", menu_return)
                 level_return, score = level.run()
+                if level_return:  #COMPLETE LEVEL 1
 
-                if level_return:  # completou Level 1
-                    # Level 2
+                    #LEVEL 2
                     level = Level(self.window, "Level2", menu_return)
                     level_return, score = level.run()
 
-                if not level_return:  # colidiu em qualquer level
+                if not level_return:  #COLLISION LEVEL
                     go = GameOver(self.window, score)
                     go_return = go.run()
+                    if go_return == GO_BUTTONS[0]:  #NEW GAME
+                        continue  #RETURN TO MENU
 
-                    if go_return == GO_BUTTONS[0]:  # NEW GAME
-                        continue  # volta pro topo do while, reinicia do menu
-                    elif go_return == GO_BUTTONS[1]:  # QUIT GAME
+                    elif go_return == GO_BUTTONS[1]:  #QUIT GAME
                         pygame.quit()
                         quit()
-
-            elif menu_return == MENU_BUTTONS[1]:  # QUIT
+            elif menu_return == MENU_BUTTONS[1]:  #QUIT
                 pygame.quit()
                 quit()

@@ -1,11 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 from code.Const import WIDTH, HEIGHT, GO_BUTTONS
-
 
 class GameOver:
     def __init__(self, window, score):
@@ -16,21 +14,20 @@ class GameOver:
         pygame.mixer.music.stop()
         selected = 0
 
-        while True:
+        while True: #GAME OVER TEXT AND COLOR
             self.window.fill((0, 0, 0))
-
             self.go_text(60, "GAME OVER", (255, 0, 0), (WIDTH / 2, HEIGHT / 2 - 80))
             self.go_text(20, f"Score: {int(self.score)}", (255, 255, 255), (WIDTH / 2, HEIGHT / 2 - 20))
 
             for i in range(len(GO_BUTTONS)):
                 if i == selected:
-                    self.go_text(22, GO_BUTTONS[i], (0, 255, 255), (WIDTH / 2, HEIGHT / 2 + 40 + 35 * i))
+                    self.go_text(22, GO_BUTTONS[i], (129, 11, 233), (WIDTH / 2, HEIGHT / 2 + 40 + 35 * i))
                 else:
-                    self.go_text(22, GO_BUTTONS[i], (255, 255, 0), (WIDTH / 2, HEIGHT / 2 + 40 + 35 * i))
+                    self.go_text(22, GO_BUTTONS[i], (241, 255, 0), (WIDTH / 2, HEIGHT / 2 + 40 + 35 * i))
 
             pygame.display.flip()
 
-            for event in pygame.event.get():
+            for event in pygame.event.get(): #EVENT TO QUIT THE GAME OVER DISPLAY
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
